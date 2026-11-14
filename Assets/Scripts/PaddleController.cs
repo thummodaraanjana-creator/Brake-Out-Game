@@ -17,13 +17,13 @@ public class PaddleController : MonoBehaviour
 
         transform.Translate(Vector2.right * move * speed * Time.deltaTime);
 
-        if (transform.position.x < -3.2f)
+        if (transform.position.x < -2.2f)
         {
-            transform.position = new Vector2(-3.2f, transform.position.y);
+            transform.position = new Vector2(-2.2f, transform.position.y);
         }
-        else if (transform.position.x > 3.2f)
+        else if (transform.position.x > 2.2f)
         {
-            transform.position = new Vector2(3.2f, transform.position.y);
+            transform.position = new Vector2(2.2f, transform.position.y);
         }
     }//PaddleMove & paddleBoundries
 }

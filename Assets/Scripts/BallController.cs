@@ -35,10 +35,7 @@ public class BallController : MonoBehaviour
             transform.position = new Vector2(12f, transform.position.y);
         }
 
-        if (transform.position.y > 5.8f)
-        {
-            transform.position = new Vector2(transform.position.x, 5.8f);
-        }
+        
     }//BallBoundaries
 }
 
