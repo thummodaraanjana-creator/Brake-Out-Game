@@ -5,8 +5,18 @@ using TMPro;
 public class LivesManager : MonoBehaviour
 {
     public TextMeshProUGUI livesText;
+    public GameObject gameOverText;
+    public GameObject restartButton;
 
     private int lives = 3;
+
+    void Start()
+    {
+        gameOverText.SetActive(false);
+        restartButton.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
 
     public void LoseLife()
     {
@@ -16,7 +26,10 @@ public class LivesManager : MonoBehaviour
 
         if (lives <= 0)
         {
-            Debug.Log("Game Over!");
+            gameOverText.SetActive(true);
+            restartButton.SetActive(true);
+
+            Time.timeScale = 0f;
         }
     }
 }

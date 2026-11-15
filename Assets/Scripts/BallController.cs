@@ -12,30 +12,22 @@ public class BallController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        LaunchBall();
+    }
+
+    public void LaunchBall()
+    {
         Vector2 direction = new Vector2(3f, 5f).normalized;
+
         rb.linearVelocity = direction * speed;
-    }//Start
+    }
 
-    void Update()
+    public void RespawnBall()
     {
+        rb.linearVelocity = Vector2.zero;
 
-        BallBoundaries();
+        transform.position = new Vector2(0f, -2f);
 
-
-    }//Update
-
-    public void BallBoundaries()
-    {
-        if (transform.position.x < -12f)
-        {
-            transform.position = new Vector2(-12f, transform.position.y);
-        }
-        else if (transform.position.x >12f)
-        {
-            transform.position = new Vector2(12f, transform.position.y);
-        }
-
-        
-    }//BallBoundaries
+        LaunchBall();
+    }
 }
-

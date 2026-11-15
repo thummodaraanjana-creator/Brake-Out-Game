@@ -11,7 +11,9 @@ public class BottomBoundary : MonoBehaviour
         {
             livesManager.LoseLife();
 
-            Destroy(collision.gameObject);
+            BallController ball = collision.GetComponent<BallController>();
+
+            ball.RespawnBall();
         }
     }
 }
