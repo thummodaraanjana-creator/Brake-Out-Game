@@ -6,16 +6,24 @@ public class WinManager : MonoBehaviour
     public GameObject winText;
     public GameObject restartButton;
 
-    private int bricksRemaining = 6;
+    private int bricksRemaining;
 
     void Start()
     {
         winText.SetActive(false);
+        restartButton.SetActive(false);
+
+        // Count all bricks in the scene
+        bricksRemaining = GameObject.FindGameObjectsWithTag("Brick").Length;
+
+        Debug.Log("Total Bricks: " + bricksRemaining);
     }
 
     public void BrickDestroyed()
     {
-        bricksRemaining = bricksRemaining - 1;
+        bricksRemaining--;
+
+        Debug.Log("Bricks Remaining: " + bricksRemaining);
 
         if (bricksRemaining <= 0)
         {
