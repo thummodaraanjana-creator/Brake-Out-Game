@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using TMPro;
 
@@ -31,5 +30,13 @@ public class LivesManager : MonoBehaviour
 
             Time.timeScale = 0f;
         }
+    }
+
+    // NEW: This function increases lives when the player collects the heart power-up
+    public void AddLife()
+    {
+        lives = lives + 1;
+
+        livesText.text = "Lives: " + lives;
     }
 }

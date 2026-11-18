@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class TwoHitBrick : MonoBehaviour
@@ -11,6 +10,10 @@ public class TwoHitBrick : MonoBehaviour
 
     private ScoreManager scoreManager;
     private WinManager winManager;
+
+    // NEW: Prefabs for power-ups so TwoHitBricks can drop them too
+    public GameObject extraLifePowerUpPrefab;
+    public GameObject tripleBallPowerUpPrefab;
 
     void Start()
     {
@@ -38,6 +41,18 @@ public class TwoHitBrick : MonoBehaviour
             scoreManager.AddScore();
 
             winManager.BrickDestroyed();
+
+            // NEW: Randomly decide if a power-up drops when destroyed
+            int randomChance = Random.Range(0, 3); // Generates 0, 1, or 2
+
+            if (randomChance == 0 && extraLifePowerUpPrefab != null)
+            {
+                Instantiate(extraLifePowerUpPrefab, transform.position, Quaternion.identity);
+            }
+            else if (randomChance == 1 && tripleBallPowerUpPrefab != null)
+            {
+                Instantiate(tripleBallPowerUpPrefab, transform.position, Quaternion.identity);
+            }
 
             Destroy(gameObject);
         }
