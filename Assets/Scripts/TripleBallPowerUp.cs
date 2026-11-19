@@ -4,13 +4,14 @@ public class TripleBallPowerUp : MonoBehaviour
 {
     public float fallSpeed = 3f;
 
+    // Drag your Ball prefab from the Project window into this slot
+    public GameObject ballPrefab;
+
     void Update()
     {
-        // Make the power-up fall downwards every frame
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 
-        // Destroy if it falls off the bottom of the screen
-        if (transform.position.y < -6f)
+        if (transform.position.y < -7f)
         {
             Destroy(gameObject);
         }
@@ -18,33 +19,31 @@ public class TripleBallPowerUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Check if the paddle touched the power-up
         if (collision.CompareTag("Player") || collision.gameObject.name.Contains("Paddle"))
         {
-            Debug.Log("Paddle caught Triple Ball!"); // <-- Check if this prints in the Console!
+            BallController mainBall = FindObjectOfType<BallController>();
 
-            // Find all balls currently in the game
-            BallController[] existingBalls = FindObjectsOfType<BallController>();
-
-            Debug.Log("Balls found: " + existingBalls.Length); // <-- Check how many balls it finds!
-
-            if (existingBalls.Length > 0)
+            if (mainBall != null)
             {
-                Transform currentBallTransform = existingBalls[0].transform;
-                GameObject ballPrefab = existingBalls[0].gameObject;
+                // Use the assigned Ball prefab, or fall back to the active ball if empty
+                GameObject templateBall = ballPrefab != null ? ballPrefab : mainBall.gameObject;
+                Vector3 spawnPos = mainBall.transform.position;
+                float ballSpeed = mainBall.speed;
 
-                GameObject ball2 = Instantiate(ballPrefab, currentBallTransform.position, Quaternion.identity);
+                // Spawn Ball 2 slightly to the left
+                GameObject ball2 = Instantiate(templateBall, spawnPos + new Vector3(-0.2f, 0f, 0f), Quaternion.identity);
                 Rigidbody2D rb2 = ball2.GetComponent<Rigidbody2D>();
                 if (rb2 != null)
                 {
-                    rb2.linearVelocity = new Vector2(-3f, 5f).normalized * 5f;
+                    rb2.linearVelocity = new Vector2(-3f, 5f).normalized * ballSpeed;
                 }
 
-                GameObject ball3 = Instantiate(ballPrefab, currentBallTransform.position, Quaternion.identity);
+                // Spawn Ball 3 slightly to the right
+                GameObject ball3 = Instantiate(templateBall, spawnPos + new Vector3(0.2f, 0f, 0f), Quaternion.identity);
                 Rigidbody2D rb3 = ball3.GetComponent<Rigidbody2D>();
                 if (rb3 != null)
                 {
-                    rb3.linearVelocity = new Vector2(3f, 5f).normalized * 5f;
+                    rb3.linearVelocity = new Vector2(3f, 5f).normalized * ballSpeed;
                 }
             }
 

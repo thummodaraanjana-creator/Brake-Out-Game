@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class BottomBoundary : MonoBehaviour
@@ -9,11 +8,25 @@ public class BottomBoundary : MonoBehaviour
     {
         if (collision.CompareTag("Ball"))
         {
-            livesManager.LoseLife();
+            // Count how many balls are currently in the scene
+            BallController[] remainingBalls = FindObjectsOfType<BallController>();
 
-            BallController ball = collision.GetComponent<BallController>();
+            // If there is more than 1 ball, just destroy the ball that fell
+            if (remainingBalls.Length > 1)
+            {
+                Destroy(collision.gameObject);
+            }
+            // If this was the LAST ball, lose a life and respawn it
+            else
+            {
+                livesManager.LoseLife();
 
-            ball.RespawnBall();
+                BallController ball = collision.GetComponent<BallController>();
+                if (ball != null)
+                {
+                    ball.RespawnBall();
+                }
+            }
         }
     }
 }

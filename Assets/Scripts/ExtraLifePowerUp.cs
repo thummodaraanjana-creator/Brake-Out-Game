@@ -10,7 +10,7 @@ public class ExtraLifePowerUp : MonoBehaviour
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime);
 
         // Destroy the heart if it falls off the bottom of the screen
-        if (transform.position.y < -6f)
+        if (transform.position.y < -7f)
         {
             Destroy(gameObject);
         }

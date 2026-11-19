@@ -1294,6 +1294,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &902364743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,6 +1929,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &1085071899
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2157,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &1219576669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,6 +2309,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &1579789237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,6 +2598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &1758171213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2730,6 +2750,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokenSprite: {fileID: 21300000, guid: 28581a52b1e4b384da03ebfa161d92be, type: 3}
+  scoreManager: {fileID: 1085071900}
+  winManager: {fileID: 1085071903}
+  extraLifePowerUpPrefab: {fileID: 1890297421788808770, guid: 849f0190ae6edca4bbe3032d4ed886de, type: 3}
+  tripleBallPowerUpPrefab: {fileID: 7906402645335573985, guid: 7d1fb26b15a23a440963c8faa3978aef, type: 3}
 --- !u!1 &1804000320
 GameObject:
   m_ObjectHideFlags: 0

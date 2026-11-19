@@ -8,48 +8,52 @@ public class TwoHitBrick : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private ScoreManager scoreManager;
-    private WinManager winManager;
+    public ScoreManager scoreManager;
+    public WinManager winManager;
 
-    // NEW: Prefabs for power-ups so TwoHitBricks can drop them too
     public GameObject extraLifePowerUpPrefab;
     public GameObject tripleBallPowerUpPrefab;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        scoreManager = FindObjectOfType<ScoreManager>();
-        winManager = FindObjectOfType<WinManager>();
     }
 
     public void HitBrick()
     {
         hitsRemaining--;
 
-        // First hit
+        // First hit: change sprite and add score
         if (hitsRemaining == 1)
         {
             spriteRenderer.sprite = brokenSprite;
 
-            scoreManager.AddScore();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore();
+            }
         }
 
-        // Second hit
+        // Second hit: add score, notify win manager, drop power-up, and destroy brick
         else if (hitsRemaining <= 0)
         {
-            scoreManager.AddScore();
+            if (scoreManager != null)
+            {
+                scoreManager.AddScore();
+            }
 
-            winManager.BrickDestroyed();
+            if (winManager != null)
+            {
+                winManager.BrickDestroyed();
+            }
 
-            // NEW: Randomly decide if a power-up drops when destroyed
-            int randomChance = Random.Range(0, 3); // Generates 0, 1, or 2
+            int dropRoll = Random.Range(0, 3); // 0 = Extra Life, 1 = Triple Ball, 2 = No drop
 
-            if (randomChance == 0 && extraLifePowerUpPrefab != null)
+            if (dropRoll == 0 && extraLifePowerUpPrefab != null)
             {
                 Instantiate(extraLifePowerUpPrefab, transform.position, Quaternion.identity);
             }
-            else if (randomChance == 1 && tripleBallPowerUpPrefab != null)
+            else if (dropRoll == 1 && tripleBallPowerUpPrefab != null)
             {
                 Instantiate(tripleBallPowerUpPrefab, transform.position, Quaternion.identity);
             }
