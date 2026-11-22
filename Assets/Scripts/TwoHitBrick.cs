@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class TwoHitBrick : MonoBehaviour
@@ -5,6 +6,7 @@ public class TwoHitBrick : MonoBehaviour
     public Sprite brokenSprite;
 
     private int hitsRemaining = 2;
+    private bool isDestroyed = false;
 
     private SpriteRenderer spriteRenderer;
 
@@ -21,41 +23,39 @@ public class TwoHitBrick : MonoBehaviour
 
     public void HitBrick()
     {
+        if (isDestroyed)
+            return;
+
         hitsRemaining--;
 
-        // First hit: change sprite and add score
         if (hitsRemaining == 1)
         {
             spriteRenderer.sprite = brokenSprite;
 
             if (scoreManager != null)
-            {
                 scoreManager.AddScore();
-            }
         }
-
-        // Second hit: add score, notify win manager, drop power-up, and destroy brick
         else if (hitsRemaining <= 0)
         {
+            isDestroyed = true;
+
             if (scoreManager != null)
-            {
                 scoreManager.AddScore();
-            }
 
             if (winManager != null)
-            {
                 winManager.BrickDestroyed();
-            }
 
-            int dropRoll = Random.Range(0, 3); // 0 = Extra Life, 1 = Triple Ball, 2 = No drop
+            int dropRoll = Random.Range(0, 3);
 
             if (dropRoll == 0 && extraLifePowerUpPrefab != null)
             {
-                Instantiate(extraLifePowerUpPrefab, transform.position, Quaternion.identity);
+                Instantiate(extraLifePowerUpPrefab,
+                    transform.position, Quaternion.identity);
             }
             else if (dropRoll == 1 && tripleBallPowerUpPrefab != null)
             {
-                Instantiate(tripleBallPowerUpPrefab, transform.position, Quaternion.identity);
+                Instantiate(tripleBallPowerUpPrefab,
+                    transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);

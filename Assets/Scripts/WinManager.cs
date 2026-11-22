@@ -13,8 +13,10 @@ public class WinManager : MonoBehaviour
         winText.SetActive(false);
         restartButton.SetActive(false);
 
-        // Count all bricks in the scene
-        bricksRemaining = GameObject.FindGameObjectsWithTag("Brick").Length;
+        // Count all bricks in the current level
+        GameObject[] bricks = GameObject.FindGameObjectsWithTag("Brick");
+
+        bricksRemaining = bricks.Length;
 
         Debug.Log("Total Bricks: " + bricksRemaining);
     }
@@ -25,12 +27,15 @@ public class WinManager : MonoBehaviour
 
         Debug.Log("Bricks Remaining: " + bricksRemaining);
 
-        if (bricksRemaining <= 0)
+        // Show win message only when every brick is destroyed
+        if (bricksRemaining == 0)
         {
             winText.SetActive(true);
             restartButton.SetActive(true);
 
             Time.timeScale = 0f;
+
+            Debug.Log("YOU WIN!");
         }
     }
 }
